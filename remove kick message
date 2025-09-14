@@ -1,0 +1,8 @@
+local CoreGui = game:GetService("CoreGui")
+
+CoreGui:WaitForChild("RobloxPromptGui", math.huge):Destroy()
+game.Lighting.ChildAdded:Connect(function(child)
+    if child:IsA("BlurEffect") then
+        child:Destroy()
+    end
+end)

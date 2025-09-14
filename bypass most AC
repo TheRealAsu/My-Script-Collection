@@ -1,0 +1,10 @@
+-- put in auto exec
+
+local OldNameCall
+OldNameCall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+    local caller, callmethod, args = checkcaller(), getnamecallmethod(), {...}
+    if getcallingscript() and getcallingscript().Name == "LocalScript" and callmethod == "GetFullName" then
+        return nil
+    end
+return OldNameCall(self,...)
+end))
